@@ -1,2 +1,5 @@
 # hw0_pf
-run `python Q7.py`
+
+Notice, using the provided dataset, there is some modification on barcode.dat for easy loading.
+
+run `python run.py`

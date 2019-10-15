@@ -94,8 +94,8 @@ class ParticleFilter:
         # print("diff_range",diff_range)
         # print("diff_bearing",diff_bearing)
 
-        l_range = self.norm_pdf(diff_range,2)
-        l_bearing = self.norm_pdf(diff_bearing,np.pi/4)
+        l_range = self.norm_pdf(diff_range,2+6)
+        l_bearing = self.norm_pdf(diff_bearing,np.pi/4+ np.pi/4)
         l = l_range * l_bearing
 
         # l = np.exp(-diff_range) + np.exp(-diff_bearing)

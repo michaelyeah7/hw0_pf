@@ -1,9 +1,9 @@
 import copy
 from particleFilter import ParticleFilter
 from particle_env import ParticleEnv
-from utils import load_data, generate_barcode_dict, whether_landmark, plot_predict_trajectory_Q7
+from utils import load_data, generate_barcode_dict, whether_landmark, plot_predict_trajectory_Q9
 
-def Q7():
+def Q9():
     #load data, need odometry.dat for command, measurement.dat for comparision, landmark_gt.dat for measurement model
     odom_data = load_data('ds1_Odometry.dat', 3, 0, [0, 4, 5])
     landmark_gt_data = load_data('ds1_Landmark_Groundtruth.dat', 3, 0, [0, 2, 4, 6, 8])
@@ -51,7 +51,7 @@ def Q7():
             filter.resample()
             i+=1
 
-    plot_predict_trajectory_Q7(robot_trajectory, robot_pos_predict_trajectory, gt_data)
+    plot_predict_trajectory_Q9(robot_trajectory, robot_pos_predict_trajectory, gt_data)
     # print("robot_pos_predict_trajectory:",robot_pos_predict_trajectory)
 
 

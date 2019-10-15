@@ -79,13 +79,13 @@ def plot_predict_trajectory_Q7(robot_trajectory, robot_pos_predict_trajectory, g
     # ground_truth = load_data('./ds1_Groundtruth.dat', 3, 0, [0,4,5])
     x_gt = []
     y_gt = []
-    for i in range(50000):
+    for i in range(23000):
         x_gt.append(ground_truth[i][1])
         y_gt.append(ground_truth[i][2])
 
     fig = plt.figure()
     ax = plt.subplot(111)
-    ax.plot(x, y, label='odometry')
+    # ax.plot(x, y, label='odometry')
     ax.plot(x_pred, y_pred, label='filter prediction')
     ax.plot(x_gt, y_gt, label='ground_truth')
     plt.title('Particle Filter')
@@ -118,10 +118,50 @@ def plot_predict_trajectory_Q8(robot_trajectory, robot_pos_predict_trajectory):
     ax = plt.subplot(111)
     ax.plot(x, y, label='odometry')
     ax.plot(x_pred, y_pred, label='filter prediction')
-    plt.title('Q8 using Q2 odometry')
+    # plt.title('Q8 using Q2 odometry')
+    plt.title('Q8.1')
     ax.legend()
     
     plt.savefig('./results/predict_trajectory_Q8.png')     
+
+def plot_predict_trajectory_Q9(robot_trajectory, robot_pos_predict_trajectory, ground_truth):
+    x = []
+    y = []
+    trajectory = robot_trajectory
+    for i in range(len(trajectory)):
+        pos = trajectory[i]
+        x.append(pos[0])
+        y.append(pos[1])  
+        i += 100  
+    # plt.plot(x, y, lable='ground_truth')
+
+    x_pred = []
+    y_pred = []
+    trajectory = robot_pos_predict_trajectory
+    for i in range(len(trajectory)):
+        pos = trajectory[i]
+        x_pred.append(pos[0])
+        y_pred.append(pos[1])  
+        i += 100  
+    # plt.plot(x, y, 'filter prediction')
+
+    # ground_truth = load_data('./ds1_Groundtruth.dat', 3, 0, [0,4,5])
+    x_gt = []
+    y_gt = []
+    for i in range(23000):
+        x_gt.append(ground_truth[i][1])
+        y_gt.append(ground_truth[i][2])
+
+    fig = plt.figure()
+    ax = plt.subplot(111)
+    # ax.plot(x, y, label='odometry')
+    ax.plot(x_pred, y_pred, label='filter prediction')
+    ax.plot(x_gt, y_gt, label='ground_truth')
+    plt.title('Increase likelihood noise')
+    ax.legend()
+    
+    plt.savefig('./results/predict_trajectory_Q9_increase_likelihood_noise.png')    
+
 
 def generate_barcode_dict(barcode_data):
     barcode_dict = {}
