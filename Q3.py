@@ -1,6 +1,6 @@
 import numpy as np
 from env import Env
-from utils import load_data, plot_trajectory_Q3, plot_trajectory_Q3_ground_truth
+from utils import load_data, plot_trajectory_Q3
 
 #pos [x, y, theta]
 #command [time, v_l, v_w]
@@ -17,15 +17,6 @@ for i in range(len(commands)-1):
     vel.append(commands[i][2]) 
     env.step(vel, duration)
 
-#plot trajectory named trajectory_Q3.png
-plot_trajectory_Q3(env.trajectory)
-
-ground_truth = load_data('./ds1_Groundtruth.dat', 3, 0, [0,4,5])
-x = []
-y = []
-for i in range(len(ground_truth)):
-    x.append(ground_truth[i][1])
-    y.append(ground_truth[i][2])
-#plot trajectory named trajectory_Q3_ground_truth.png   
-plot_trajectory_Q3_ground_truth(x, y)
+ground_truth = load_data('ds1_Groundtruth.dat', 3, 0, [0,3,5,7]) 
+plot_trajectory_Q3(env.trajectory, ground_truth)
 

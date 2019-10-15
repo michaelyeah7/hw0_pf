@@ -82,12 +82,16 @@ class ParticleEnv:
         pos = [particle.x, particle.y, particle.theta]
         new_pos = copy.deepcopy(pos)
         #calculate the new x and y
-        new_pos[0] = pos[0] + vel[0] * np.cos(pos[2]) * duration
-        new_pos[1] = pos[1] + vel[0] * np.sin(pos[2]) * duration
+        new_pos[0] = pos[0] + vel[0] * np.cos(pos[2]) * duration 
+        new_pos[1] = pos[1] + vel[0] * np.sin(pos[2]) * duration 
         #calculate the new theta
         new_pos[2] = pos[2] + vel[1] * duration
 
-        self.partcles[i].x = new_pos[0]
-        self.partcles[i].y = new_pos[1]
-        self.partcles[i].theta = new_pos[2]
+        self.partcles[i].x = self.add_noise(new_pos[0],0.002)
+        self.partcles[i].y = self.add_noise(new_pos[1],0.002)
+        self.partcles[i].theta = self.add_noise(new_pos[2],np.pi/100)
+    
+    def add_noise(self, mean, noise):
+        return np.random.normal(mean, noise)
+
 
